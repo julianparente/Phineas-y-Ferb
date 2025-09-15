@@ -1,3 +1,25 @@
+@media (max-width: 768px) {
+    .header {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    .header .logo {
+        margin-left: 0 !important;
+        order: 1 !important;
+        flex: 0 0 auto !important;
+    }
+    .hamburger-icon {
+        display: flex !important;
+        order: 2 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        flex: 0 0 auto !important;
+    }
+}
 /* Animaciones hover para imágenes de temporada1.html */
 .temporada1-hero-img, .momentos-img {
     transition: transform 0.3s;
