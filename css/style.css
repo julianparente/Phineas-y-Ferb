@@ -1,3 +1,70 @@
+@media (max-width: 768px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100vw;
+        min-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .header .logo {
+        margin-left: 0 !important;
+        margin-right: auto;
+        order: 1;
+    }
+
+    .hamburger-icon {
+        margin-left: auto;
+        margin-right: 10px;
+        order: 2;
+    }
+
+    .main-content {
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        width: auto !important;
+        margin-left: 2vw !important;
+        margin-right: 2vw !important;
+        max-width: 96vw !important;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+}
+@media (min-width: 769px) {
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: var(--color-secondary);
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .header .logo {
+        margin-left: 200px;
+    }
+
+    .hamburger-icon {
+        display: none;
+    }
+
+    .nav-menu {
+        position: unset;
+        left: unset;
+        transform: unset;
+        margin-left: auto;
+        margin-right: 220px;
+    }
+}
 /* Animaciones hover para imágenes de temporada1.html */
 .temporada1-hero-img, .momentos-img {
     transition: transform 0.3s;
@@ -183,17 +250,7 @@ body.temporada1-page .hero-section {
     color: var(--color-text-dark);
     margin: 0;
 }
-@media (max-width: 600px) {
-    .main-content {
-        border-radius: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
-        width: 100vw !important;
-        margin-left: 4vw !important;
-        margin-right: 6vw !important;
-        max-width: 100vw !important;
-        box-sizing: border-box;
-    }
+/* El siguiente bloque ya está incluido correctamente al inicio del archivo y no debe duplicarse */
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
@@ -976,20 +1033,5 @@ p {
 
     .character-details-wrapper img {
         margin-top: 20px;
-    }
-
-    /* Eliminar borde y border-radius del contenedor principal en móviles */
-    .main-content {
-        border-radius: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
-        width: 100vw !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        max-width: 100vw !important;
-    }
-    html, body {
-        overflow-x: hidden !important;
-        max-width: 100vw !important;
     }
 }
