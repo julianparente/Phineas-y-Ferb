@@ -1,3 +1,128 @@
+/* Animaciones hover para imágenes de temporada1.html */
+.temporada1-hero-img, .momentos-img {
+    transition: transform 0.3s;
+}
+.temporada1-hero-img:hover, .momentos-img:hover {
+    transform: scale(1.07) rotate(-2deg);
+}
+/* === Estilos específicos para temporada1.html === */
+body.temporada1-page .hero-section {
+    background: #f5b583;
+    border-radius: 24px;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.temporada1-hero-content {
+    padding: 2.5em 2em;
+    border-radius: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2em;
+}
+.temporada1-hero-imgs {
+    flex: 1 1 340px;
+    min-width: 260px;
+    text-align: center;
+}
+.temporada1-hero-img {
+    width: 500px;
+    max-width: 100%;
+    border-radius: 18px;
+    margin-bottom: 1.2em;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.temporada1-hero-img.main {
+    margin-bottom: 1.2em;
+}
+.temporada1-hero-text {
+    flex: 2 1 340px;
+    min-width: 260px;
+}
+.temporada1-title {
+    font-family: 'Baloo 2',cursive;
+    color: var(--color-primary);
+    text-align: left;
+    font-size: 2.2em;
+    margin-bottom: 0.2em;
+}
+.temporada1-subtitle {
+    font-family: 'Baloo 2',cursive;
+    color: #2d8bba;
+    text-align: left;
+    font-size: 1.3em;
+    margin-bottom: 1em;
+}
+.temporada1-datos {
+    font-size: 1.1em;
+    color: #333;
+    padding-left: 1.2em;
+    margin-bottom: 1.2em;
+    line-height: 1.7;
+}
+.temporada1-descripcion {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.7;
+}
+.temporada1-descripcion p {
+    margin-bottom: 1em;
+}
+.icon-rocket { color: #f7b32b; }
+.icon-secret { color: #2d8bba; }
+.icon-laugh { color: #e94f37; }
+.icon-star { color: #f7b32b; }
+
+/* Momentos inolvidables */
+.momentos-title {
+    font-family: 'Baloo 2',cursive;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 1.2em;
+    font-size: 2.2em;
+    letter-spacing: 1px;
+}
+.momentos-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+}
+.momentos-card {
+    background: #f5b583;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 1.2em;
+    max-width: 270px;
+    min-width: 220px;
+    flex: 1 1 220px;
+    text-align: center;
+}
+.momentos-img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 0.7em;
+}
+.momentos-desc {
+    font-size: 1em;
+}
+.volver-temporadas-btn {
+    text-align: center;
+    margin: 2.5em 0 0 0;
+}
+.volver-temporadas-btn .btn-primary {
+    padding: 0.8em 2em;
+    font-size: 1.1em;
+    border-radius: 12px;
+    background: var(--color-primary);
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Baloo 2',cursive;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    transition: background 0.2s;
+}
 /* === Temporadas Grid === */
 .season-grid {
     display: grid;
@@ -476,7 +601,7 @@ p {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: #eca36b;
+    background-color: #f5b583;
     border-radius: 10px;
     border: 2px solid var(--color-border-dark); /* Borde oscuro */
     padding: 15px;
@@ -489,6 +614,7 @@ p {
     border-radius: 8px;
     margin-bottom: 10px;
     transition: transform 0.3s ease-in-out;
+    background: #f5b583;
 }
 
 .secondary-characters-gallery .character-card img:hover {
