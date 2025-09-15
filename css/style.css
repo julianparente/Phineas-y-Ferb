@@ -475,7 +475,8 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--color-lighter-card-background); /* Fondo más claro para las tarjetas */
+    text-align: center;
+    background-color: #eca36b;
     border-radius: 10px;
     border: 2px solid var(--color-border-dark); /* Borde oscuro */
     padding: 15px;
