@@ -516,6 +516,20 @@ p {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .header .logo {
+        margin-left: 0;
+        order: 1;
+    }
+    .hamburger-icon {
+        display: flex;
+        order: 2;
+        margin-left: auto;
+    }
+    .nav-menu {
+        margin-right: 0;
     }
 
     .nav-menu {
