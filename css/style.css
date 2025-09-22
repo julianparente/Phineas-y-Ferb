@@ -1,3 +1,134 @@
+body.temporada2-page .momentos-section,
+body.temporada3-page .momentos-section,
+body.temporada4-page .momentos-section {
+    max-width: 900px;
+    margin: 0 auto 2.5em auto;
+}
+body.temporada2-page .momentos-cards,
+body.temporada3-page .momentos-cards,
+body.temporada4-page .momentos-cards {
+    justify-content: center;
+}
+body.temporada2-page .momentos-card,
+body.temporada3-page .momentos-card,
+body.temporada4-page .momentos-card {
+    max-width: 520px;
+    min-width: 260px;
+    background: linear-gradient(135deg, #f5b583 90%, #fffbe6 100%);
+    box-shadow: 0 8px 24px rgba(233,79,55,0.13), 0 2px 10px rgba(0,0,0,0.10);
+    border: 2.5px solid #e94f37;
+    padding: 2em 1.2em;
+}
+body.temporada2-page .momentos-cards a,
+body.temporada3-page .momentos-cards a,
+body.temporada4-page .momentos-cards a {
+    display: block;
+    text-decoration: none;
+}
+body.temporada2-page .momentos-img,
+body.temporada3-page .momentos-img,
+body.temporada4-page .momentos-img {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto 1em auto;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px #e94f37a0;
+    border: 4px solid #fff;
+    display: block;
+}
+body.temporada2-page .momentos-title,
+body.temporada3-page .momentos-title,
+body.temporada4-page .momentos-title {
+    font-family: 'Baloo 2',cursive;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 1.2em;
+    font-size: 2.2em;
+    letter-spacing: 1px;
+}
+body.temporada2-page .momentos-btnwrap,
+body.temporada3-page .momentos-btnwrap,
+body.temporada4-page .momentos-btnwrap {
+    text-align: center;
+}
+body.temporada2-page .momentos-btn,
+body.temporada3-page .momentos-btn,
+body.temporada4-page .momentos-btn {
+    display: inline-block;
+    background: #e94f37;
+    color: #fff;
+    font-size: 1.18em;
+    font-family: 'Baloo 2',cursive;
+    padding: 0.7em 1.7em;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px #e94f37a0;
+    margin-top: 0.7em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+}
+body.temporada2-page .momentos-btn i,
+body.temporada3-page .momentos-btn i,
+body.temporada4-page .momentos-btn i {
+    margin-left: 6px;
+}
+body.temporada1-page,
+body.temporada2-page,
+body.temporada3-page,
+body.temporada4-page {
+    background: url('../img/fondoTemporadas.webp') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+/* === Estilos exclusivos para la sección de momentos de temporada1.html === */
+body.temporada1-page .momentos-section {
+    max-width: 900px;
+    margin: 0 auto 2.5em auto;
+}
+body.temporada1-page .temporada1-momentos-cards {
+    justify-content: center;
+}
+body.temporada1-page .temporada1-momentos-card {
+    max-width: 520px;
+    min-width: 260px;
+    background: linear-gradient(135deg, #f5b583 90%, #fffbe6 100%);
+    box-shadow: 0 8px 24px rgba(233,79,55,0.13), 0 2px 10px rgba(0,0,0,0.10);
+    border: 2.5px solid #e94f37;
+    padding: 2em 1.2em;
+}
+body.temporada1-page .temporada1-momentos-link {
+    display: block;
+    text-decoration: none;
+}
+body.temporada1-page .temporada1-momentos-img {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto 1em auto;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px #e94f37a0;
+    border: 4px solid #fff;
+    display: block;
+}
+body.temporada1-page .temporada1-momentos-btnwrap {
+    text-align: center;
+}
+body.temporada1-page .temporada1-momentos-btn {
+    display: inline-block;
+    background: #e94f37;
+    color: #fff;
+    font-size: 1.18em;
+    font-family: 'Baloo 2',cursive;
+    padding: 0.7em 1.7em;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px #e94f37a0;
+    margin-top: 0.7em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+}
+body.temporada1-page .temporada1-momentos-btn i {
+    margin-left: 6px;
+}
 @media (max-width: 768px) {
     .header {
         flex-direction: row;
@@ -137,10 +268,11 @@ body.temporada1-page .hero-section {
 .temporada1-descripcion p {
     margin-bottom: 1em;
 }
-.icon-rocket { color: #f7b32b; }
+/* Mejor contraste para íconos descriptivos */
+.icon-rocket { color: #1a237e !important; }
 .icon-secret { color: #2d8bba; }
 .icon-laugh { color: #e94f37; }
-.icon-star { color: #f7b32b; }
+.icon-star { color: #00bcd4 !important; }
 
 /* Momentos inolvidables */
 .momentos-title {
@@ -285,10 +417,17 @@ body {
     background-size: cover;
 }
 
+
 body.contact-page {
     background: url('../img/fondoContacto.webp') no-repeat center center fixed;
     background-size: cover;
     color: #333; /* Color de texto para el contacto */
+}
+
+body.temporadas-page {
+    background: url('../img/fondoTemporadas.webp') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
 }
 
 .galeria-page {
