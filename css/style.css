@@ -1,4 +1,9 @@
 @media (max-width: 768px) {
+    .season-thumb {
+        border-radius: 12px !important;
+    }
+}
+@media (max-width: 768px) {
     .hero-section {
         border-radius: 36px !important;
     }
