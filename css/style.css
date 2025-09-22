@@ -1,3 +1,8 @@
+@media (max-width: 768px) {
+    .hero-section {
+        border-radius: 36px !important;
+    }
+}
 body.temporada2-page .momentos-section,
 body.temporada3-page .momentos-section,
 body.temporada4-page .momentos-section {
