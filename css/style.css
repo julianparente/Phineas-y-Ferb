@@ -12,6 +12,7 @@ body.temporada2-page .momentos-section,
 body.temporada3-page .momentos-section,
 body.temporada4-page .momentos-section {
     max-width: 900px;
+    
     margin: 0 auto 2.5em auto;
 }
 body.temporada2-page .momentos-cards,
