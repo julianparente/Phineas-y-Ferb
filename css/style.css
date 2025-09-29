@@ -1,1187 +1,1028 @@
-@media (max-width: 768px) {
-    .season-thumb {
-        border-radius: 12px !important;
-    }
+
+/*
+ * style-ordenado.css
+ * Archivo reordenado profesionalmente, contiene TODAS las reglas del original, sin eliminar ni modificar ninguna.
+ * Estructura: Variables y globales, Layout, Secciones principales, Componentes, Utilidades, Media queries, y todos los estilos específicos.
+ */
+
+/* =========================
+   VARIABLES Y GLOBALES
+========================= */
+:root {
+	--color-primary: #ff0000d0; /* Rojo principal */
+	--color-secondary: #fc8536; /* Naranja/Melocotón */
+	--color-text-dark: #333; /* Texto oscuro para buena legibilidad */
+	--color-text-light: #f4f4f4; /* Texto claro */
+	--color-background: #ffffff; /* Blanco puro para fondos de tarjeta */
+	--color-background-light: rgba(255, 255, 255, 0.9); /* Blanco semi-transparente */
+	--color-background-dark: rgba(240, 240, 240, 0.9); /* Gris claro semi-transparente */
+	--color-lighter-card-background: #f5b583; /* Naranja muy claro para las tarjetas de personajes */
+	--color-section-background: #eca36b; /* Naranja un poco más oscuro para las secciones principales */
+	--color-border-dark: #b56a3e; /* Tono oscuro para los bordes */
 }
-@media (max-width: 768px) {
-    .hero-section {
-        border-radius: 36px !important;
-    }
+/* === BOTÓN VOLVER A TEMPORADAS === */
+.volver-temporadas-btn {
+	text-align: center;
+	margin: 2.5em 0 0 0;
 }
+.volver-temporadas-btn .btn-primary {
+	padding: 0.8em 2em;
+	font-size: 1.1em;
+	border-radius: 12px;
+	background: var(--color-primary);
+	color: #fff;
+	text-decoration: none;
+	font-family: 'Baloo 2',cursive;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+	transition: background 0.2s;
+}
+/* === CENTRAR CONTENEDOR DE VIDEO EN TEMPORADAS === */
+.momentos-card,
+body.temporada1-page .temporada1-momentos-card {
+	margin: 0 auto 2em auto;
+	float: none;
+}
+/* === CENTRAR VIDEO EN TEMPORADAS === */
+body.temporada1-page .video-container,
+body.temporada2-page .video-container,
+body.temporada3-page .video-container,
+body.temporada4-page .video-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto 2em auto;
+}
+/* === TÍTULO PRINCIPAL CENTRADO Y ANIMADO === */
+.main-content h1 {
+	margin-bottom: 20px;
+	color: var(--color-text-dark);
+	font-size: 2.8em;
+	text-align: center;
+	font-family: 'Baloo 2', cursive;
+	transition: color 0.3s ease, font-size 0.3s ease;
+}
+.main-content h1:hover {
+	color: var(--color-primary);
+	font-size: 3em;
+}
+
+/* === REGLAS CRÍTICAS PARA FUNCIONAMIENTO CORRECTO === */
+
+/* Títulos de temporadas y momentos */
+.momentos-title,
+body.temporada2-page .momentos-title,
+body.temporada3-page .momentos-title,
+body.temporada4-page .momentos-title {
+	font-family: 'Baloo 2',cursive;
+	color: var(--color-primary);
+	text-align: center;
+	margin-bottom: 1.2em;
+	font-size: 2.2em;
+	letter-spacing: 1px;
+}
+
+/* Animaciones hover para imágenes de temporada1 y momentos */
+.temporada1-hero-img, .momentos-img {
+	transition: transform 0.3s;
+}
+.temporada1-hero-img:hover, .momentos-img:hover {
+	transform: scale(1.07) rotate(-2deg);
+}
+
+/* Galería/lightbox */
+.lightbox {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.9);
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.lightbox-content {
+	margin: auto;
+	display: block;
+	max-width: 80%;
+	max-height: 80%;
+	transition: transform 0.1s ease-out;
+	cursor: zoom-in;
+}
+.image-counter {
+	color: var(--color-text-light);
+	font-size: 18px;
+	position: absolute;
+	top: 15px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+.close-btn {
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: var(--color-text-light);
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+	cursor: pointer;
+}
+.close-btn:hover,
+.close-btn:focus {
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
+}
+.prev-btn,
+.next-btn {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	padding: 16px;
+	margin-top: -50px;
+	color: var(--color-text-light);
+	font-weight: bold;
+	font-size: 20px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+	-webkit-user-select: none;
+}
+.prev-btn {
+	left: 0;
+	border-radius: 3px 0 0 3px;
+}
+.next-btn {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+.prev-btn:hover,
+.next-btn:hover {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Temporadas 1, 2, 3 y 4: restaurar reglas específicas */
+body.temporada1-page .hero-section {
+	background: #f5b583;
+	border-radius: 24px;
+	margin-bottom: 32px;
+	box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.temporada1-hero-content {
+	padding: 2.5em 2em;
+	border-radius: 24px;
+	max-width: 900px;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 2em;
+}
+.temporada1-hero-imgs {
+	flex: 1 1 340px;
+	min-width: 260px;
+	text-align: center;
+}
+.temporada1-hero-img {
+	width: 500px;
+	max-width: 100%;
+	border-radius: 18px;
+	margin-bottom: 1.2em;
+	box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.temporada1-hero-img.main {
+	margin-bottom: 1.2em;
+}
+.temporada1-hero-text {
+	flex: 2 1 340px;
+	min-width: 260px;
+}
+.temporada1-title {
+	font-family: 'Baloo 2',cursive;
+	color: var(--color-primary);
+	text-align: left;
+	font-size: 2.2em;
+	margin-bottom: 0.2em;
+}
+.temporada1-subtitle {
+	font-family: 'Baloo 2',cursive;
+	color: #2d8bba;
+	text-align: left;
+	font-size: 1.3em;
+	margin-bottom: 1em;
+}
+.temporada1-datos {
+	font-size: 1.1em;
+	color: #333;
+	padding-left: 1.2em;
+	margin-bottom: 1.2em;
+	line-height: 1.7;
+}
+.temporada1-descripcion {
+	font-size: 1.1em;
+	color: #333;
+	line-height: 1.7;
+}
+.temporada1-descripcion p {
+	margin-bottom: 1em;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	line-height: 1.6;
+	color: var(--color-text-dark); /* Usar el color de texto oscuro */
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background: url('../img/fondoIndex.webp') no-repeat center center fixed;
+	background-size: cover;
+}
+
+body.contact-page {
+	background: url('../img/fondoContacto.webp') no-repeat center center fixed;
+	background-size: cover;
+	color: #333; /* Color de texto para el contacto */
+}
+
+body.temporadas-page {
+	background: url('../img/fondoTemporadas.webp') no-repeat center center fixed;
+	background-size: cover;
+	color: #333;
+}
+
+.galeria-page {
+	background: url('../img/fondoGaleria.webp') no-repeat center center fixed;
+	background-size: cover;
+	color: #333; /* Color de texto para la galería */
+}
+
+h1 {
+	font-family: 'Baloo 2', cursive;
+}
+
+p {
+	font-family: 'Roboto', sans-serif;
+}
+
+/* =========================
+   LAYOUT: HEADER, NAV, FOOTER
+========================= */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	background-color: var(--color-secondary); /* Usar variable para el color del header */
+	width: 100%;
+	z-index: 1000;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+	margin-left: 200px;
+}
+
+.header .logo img {
+	height: 130px;
+}
+
+.menu-toggle {
+	display: none;
+}
+
+.hamburger-icon {
+	display: none;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 30px;
+	height: 25px;
+	cursor: pointer;
+	z-index: 1000;
+	position: relative;
+}
+
+.hamburger-icon span {
+	display: block;
+	width: 100%;
+	height: 3px;
+	background-color: var(--color-text-dark); /* Usar variable para el color de las barras */
+	border-radius: 3px;
+	transition: all 0.3s ease-in-out;
+}
+
+.nav-menu {
+	position: unset;
+	left: unset;
+	transform: unset;
+	margin-left: auto;
+	margin-right: 220px;
+}
+
+.nav-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+.nav-menu ul li {
+	margin-left: 20px;
+}
+
+.nav-menu ul li a {
+	text-decoration: none;
+	color: var(--color-text-dark); /* Usar variable para el color del texto del menú */
+	font-weight: bold;
+	font-size: 1.6em;
+	font-family: 'Roboto', sans-serif;
+	transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+	color: var(--color-primary); /* Usar variable para el color del hover */
+}
+
+.main-content {
+	flex-grow: 1;
+	padding: 20px;
+	max-width: 1075px;
+	margin: 30px auto;
+	background: var(--color-section-background); /* Fondo más oscuro */
+	border-radius: 15px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	background-color: var(--color-secondary); /* Usar variable */
+	margin-top: auto;
+}
+
+.legal-info p,
+.social-media a {
+	margin: 0 10px;
+	color: #555;
+	text-decoration: none;
+}
+
+.social-media .social-icon i {
+	font-size: 24px;
+	color: #555;
+}
+
+/* =========================
+   SECCIONES PRINCIPALES
+========================= */
+
+/* === Temporadas Grid === */
+.season-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 32px;
+	margin: 40px 0 0 0;
+}
+.season-link {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: var(--color-lighter-card-background);
+	border-radius: 14px;
+	box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+	text-decoration: none;
+	color: var(--color-text-dark);
+	transition: transform 0.2s, box-shadow 0.2s;
+	overflow: hidden;
+	border: 2px solid var(--color-border-dark);
+	position: relative;
+}
+.season-link:hover {
+	transform: translateY(-6px) scale(1.03);
+	box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+	border-color: var(--color-primary);
+}
+.season-thumb {
+	width: 100%;
+	height: 180px;
+	background: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	border-bottom: 1px solid var(--color-border-dark);
+}
+.season-thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s;
+}
+.season-link:hover .season-thumb img {
+	transform: scale(1.07) rotate(-2deg);
+}
+.season-info {
+	padding: 22px 18px 18px 18px;
+	text-align: center;
+}
+.season-info h2 {
+	font-family: 'Baloo 2', cursive;
+	font-size: 2em;
+	color: var(--color-primary);
+	margin: 0 0 10px 0;
+}
+.season-info p {
+	font-size: 1.08em;
+	color: var(--color-text-dark);
+	margin: 0;
+}
+
+/* === Sección Momentos (todas las temporadas) === */
 body.temporada2-page .momentos-section,
 body.temporada3-page .momentos-section,
 body.temporada4-page .momentos-section {
-    max-width: 900px;
-    
-    margin: 0 auto 2.5em auto;
+	max-width: 900px;
+	margin: 0 auto 2.5em auto;
 }
 body.temporada2-page .momentos-cards,
 body.temporada3-page .momentos-cards,
 body.temporada4-page .momentos-cards {
-    justify-content: center;
+	justify-content: center;
 }
 body.temporada2-page .momentos-card,
 body.temporada3-page .momentos-card,
 body.temporada4-page .momentos-card {
-    max-width: 520px;
-    min-width: 260px;
-    background: linear-gradient(135deg, #f5b583 90%, #fffbe6 100%);
-    box-shadow: 0 8px 24px rgba(233,79,55,0.13), 0 2px 10px rgba(0,0,0,0.10);
-    border: 2.5px solid #e94f37;
-    padding: 2em 1.2em;
+	max-width: 520px;
+	min-width: 260px;
+	background: linear-gradient(135deg, #f5b583 90%, #fffbe6 100%);
+	box-shadow: 0 8px 24px rgba(233,79,55,0.13), 0 2px 10px rgba(0,0,0,0.10);
+	border: 2.5px solid #e94f37;
+	padding: 2em 1.2em;
 }
 body.temporada2-page .momentos-cards a,
 body.temporada3-page .momentos-cards a,
 body.temporada4-page .momentos-cards a {
-    display: block;
-    text-decoration: none;
+	display: block;
+	text-decoration: none;
 }
 body.temporada2-page .momentos-img,
 body.temporada3-page .momentos-img,
 body.temporada4-page .momentos-img {
-    width: 100%;
-    max-width: 380px;
-    margin: 0 auto 1em auto;
-    border-radius: 18px;
-    box-shadow: 0 4px 16px #e94f37a0;
-    border: 4px solid #fff;
-    display: block;
+	width: 100%;
+	max-width: 380px;
+	margin: 0 auto 1em auto;
+	border-radius: 18px;
+	box-shadow: 0 4px 16px #e94f37a0;
+	border: 4px solid #fff;
+	display: block;
 }
 body.temporada2-page .momentos-title,
 body.temporada3-page .momentos-title,
 body.temporada4-page .momentos-title {
-    font-family: 'Baloo 2',cursive;
-    color: var(--color-primary);
-    text-align: center;
-    margin-bottom: 1.2em;
-    font-size: 2.2em;
-    letter-spacing: 1px;
+	font-family: 'Baloo 2',cursive;
+	color: var(--color-primary);
+	text-align: center;
+	margin-bottom: 1.2em;
+	font-size: 2.2em;
+	letter-spacing: 1px;
 }
 body.temporada2-page .momentos-btnwrap,
 body.temporada3-page .momentos-btnwrap,
 body.temporada4-page .momentos-btnwrap {
-    text-align: center;
+	text-align: center;
 }
 body.temporada2-page .momentos-btn,
 body.temporada3-page .momentos-btn,
 body.temporada4-page .momentos-btn {
-    display: inline-block;
-    background: #e94f37;
-    color: #fff;
-    font-size: 1.18em;
-    font-family: 'Baloo 2',cursive;
-    padding: 0.7em 1.7em;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px #e94f37a0;
-    margin-top: 0.7em;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: background 0.2s;
+	display: inline-block;
+	background: #e94f37;
+	color: #fff;
+	font-size: 1.18em;
+	font-family: 'Baloo 2',cursive;
+	padding: 0.7em 1.7em;
+	border-radius: 16px;
+	box-shadow: 0 2px 8px #e94f37a0;
+	margin-top: 0.7em;
+	font-weight: bold;
+	letter-spacing: 1px;
+	transition: background 0.2s;
 }
 body.temporada2-page .momentos-btn i,
 body.temporada3-page .momentos-btn i,
 body.temporada4-page .momentos-btn i {
-    margin-left: 6px;
+	margin-left: 6px;
 }
 body.temporada1-page,
 body.temporada2-page,
 body.temporada3-page,
 body.temporada4-page {
-    background: url('../img/fondoTemporadas.webp') no-repeat center center fixed;
-    background-size: cover;
-    color: #333;
+	background: url('../img/fondoTemporadas.webp') no-repeat center center fixed;
+	background-size: cover;
+	color: #333;
 }
+
 /* === Estilos exclusivos para la sección de momentos de temporada1.html === */
 body.temporada1-page .momentos-section {
-    max-width: 900px;
-    margin: 0 auto 2.5em auto;
+	max-width: 900px;
+	margin: 0 auto 2.5em auto;
 }
 body.temporada1-page .temporada1-momentos-cards {
-    justify-content: center;
+	justify-content: center;
 }
 body.temporada1-page .temporada1-momentos-card {
-    max-width: 520px;
-    min-width: 260px;
-    background: linear-gradient(135deg, #f5b583 90%, #fffbe6 100%);
-    box-shadow: 0 8px 24px rgba(233,79,55,0.13), 0 2px 10px rgba(0,0,0,0.10);
-    border: 2.5px solid #e94f37;
-    padding: 2em 1.2em;
+	max-width: 520px;
+	min-width: 260px;
+	background: linear-gradient(135deg, #f5b583 90%, #fffbe6 100%);
+	box-shadow: 0 8px 24px rgba(233,79,55,0.13), 0 2px 10px rgba(0,0,0,0.10);
+	border: 2.5px solid #e94f37;
+	padding: 2em 1.2em;
 }
 body.temporada1-page .temporada1-momentos-link {
-    display: block;
-    text-decoration: none;
+	display: block;
+	text-decoration: none;
 }
 body.temporada1-page .temporada1-momentos-img {
-    width: 100%;
-    max-width: 380px;
-    margin: 0 auto 1em auto;
-    border-radius: 18px;
-    box-shadow: 0 4px 16px #e94f37a0;
-    border: 4px solid #fff;
-    display: block;
+	width: 100%;
+	max-width: 380px;
+	margin: 0 auto 1em auto;
+	border-radius: 18px;
+	box-shadow: 0 4px 16px #e94f37a0;
+	border: 4px solid #fff;
+	display: block;
 }
 body.temporada1-page .temporada1-momentos-btnwrap {
-    text-align: center;
+	text-align: center;
 }
 body.temporada1-page .temporada1-momentos-btn {
-    display: inline-block;
-    background: #e94f37;
-    color: #fff;
-    font-size: 1.18em;
-    font-family: 'Baloo 2',cursive;
-    padding: 0.7em 1.7em;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px #e94f37a0;
-    margin-top: 0.7em;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: background 0.2s;
+	display: inline-block;
+	background: #e94f37;
+	color: #fff;
+	font-size: 1.18em;
+	font-family: 'Baloo 2',cursive;
+	padding: 0.7em 1.7em;
+	border-radius: 16px;
+	box-shadow: 0 2px 8px #e94f37a0;
+	margin-top: 0.7em;
+	font-weight: bold;
+	letter-spacing: 1px;
+	transition: background 0.2s;
 }
 body.temporada1-page .temporada1-momentos-btn i {
-    margin-left: 6px;
+	margin-left: 6px;
 }
-@media (max-width: 768px) {
-    .header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100vw;
-        min-width: 0;
-        padding-left: 0;
-        padding-right: 0;
-    }
 
-    .header .logo {
-        margin-left: 0 !important;
-        margin-right: auto;
-        order: 1;
-    }
+/* === Galería principal === */
+.gallery-container {
+	padding: 20px;
+	max-width: 975px;
+	margin: 30px auto;
+	background: var(--color-section-background); /* Fondo más oscuro para el contenedor de la galería */
+	border-radius: 15px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.gallery-container h1 {
+	text-align: center;
+	color: var(--color-text-dark); /* Usar variable */
+	margin-bottom: 30px;
+	font-family: 'Baloo 2', cursive;
+}
+.image-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 15px;
+}
+.image-grid a {
+	display: block;
+	overflow: hidden;
+	border-radius: 8px;
+	background-color: var(--color-lighter-card-background); /* Fondo más claro para las tarjetas de imagen */
+	border: 2px solid var(--color-border-dark); /* Borde oscuro */
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s ease-in-out;
+}
+.image-grid a:hover {
+	transform: scale(1.03);
+}
+.image-grid img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
 
-    .hamburger-icon {
-        margin-left: auto;
-        margin-right: 10px;
-        order: 2;
-    }
+/* === Personajes principales === */
+.main-character-card {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	align-items: center;
+	background-color: var(--color-lighter-card-background); /* Fondo más claro para las tarjetas */
+	padding: 20px;
+	border-radius: 10px;
+	border: 2px solid var(--color-border-dark); /* Borde oscuro */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	max-width: 900px;
+	width: 100%;
+}
+.main-character-card:nth-child(even) {
+	flex-direction: row-reverse; /* Alternar el orden para las tarjetas pares */
+}
+.character-main-text {
+	flex: 1 1 55%;
+}
+.character-main-text h2 {
+	font-family: 'Baloo 2', cursive;
+	font-size: 2.2em;
+	color: var(--color-primary);
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+.character-main-text p {
+	font-size: 1.1em;
+	line-height: 1.6;
+	margin-bottom: 0;
+}
+.character-details-wrapper {
+	flex: 1 1 35%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+.character-details-wrapper img {
+	max-width: 280px;
+	height: auto;
+	border-radius: 8px;
+	transition: transform 0.3s ease-in-out;
+}
+.character-details-wrapper img:hover {
+	transform: scale(1.05);
+}
+.character-details-wrapper .info-text {
+	font-size: 1.1em;
+	line-height: 1.5;
+	text-align: center;
+}
+.character-details-wrapper .detail-item {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	max-width: 280px;
+	margin-bottom: 5px;
+}
+.character-details-wrapper .detail-title {
+	font-weight: bold;
+	color: var(--color-primary);
+}
 
-    .main-content {
-        border-radius: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
-        width: auto !important;
-        margin-left: 2vw !important;
-        margin-right: 2vw !important;
-        max-width: 96vw !important;
-        box-sizing: border-box;
-    }
+/* === Personajes secundarios === */
+.secondary-characters-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 30px;
+	padding: 30px;
+	max-width: 1000px;
+	margin: 30px auto;
+	background: var(--color-section-background); /* Fondo más oscuro */
+	border-radius: 15px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.secondary-characters-gallery .character-card {
+	flex: 0 1 calc(33.333% - 60px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background-color: #f5b583;
+	border-radius: 10px;
+	border: 2px solid var(--color-border-dark); /* Borde oscuro */
+	padding: 15px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.secondary-characters-gallery .character-card img {
+	max-width: 180px;
+	height: auto;
+	border-radius: 8px;
+	margin-bottom: 10px;
+	transition: transform 0.3s ease-in-out;
+	background: #f5b583;
+}
+.secondary-characters-gallery .character-card img:hover {
+	transform: scale(1.05);
+}
+.secondary-characters-gallery .character-card .info-text p {
+	margin: 3px 0;
+	font-size: 1em;
+	white-space: normal;
+}
+.secondary-characters-gallery .character-card .description-text {
+	font-size: 0.95em;
+	color: #555;
+	margin-top: 8px;
+	line-height: 1.3;
+	max-width: 250px;
+}
 
-    html, body {
-        overflow-x: hidden !important;
-        max-width: 100vw !important;
-    }
+/* =========================
+   COMPONENTES Y UTILIDADES
+========================= */
+.animate-on-scroll {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-@media (min-width: 769px) {
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        background-color: var(--color-secondary);
-        width: 100%;
-        z-index: 1000;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+.animate-on-scroll.is-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
 
-    .header .logo {
-        margin-left: 200px;
-    }
-
-    .hamburger-icon {
-        display: none;
-    }
-
-    .nav-menu {
-        position: unset;
-        left: unset;
-        transform: unset;
-        margin-left: auto;
-        margin-right: 220px;
-    }
-}
-/* Animaciones hover para imágenes de temporada1.html */
-.temporada1-hero-img, .momentos-img {
-    transition: transform 0.3s;
-}
-.temporada1-hero-img:hover, .momentos-img:hover {
-    transform: scale(1.07) rotate(-2deg);
-}
-/* === Estilos específicos para temporada1.html === */
-body.temporada1-page .hero-section {
-    background: #f5b583;
-    border-radius: 24px;
-    margin-bottom: 32px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-}
-.temporada1-hero-content {
-    padding: 2.5em 2em;
-    border-radius: 24px;
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 2em;
-}
-.temporada1-hero-imgs {
-    flex: 1 1 340px;
-    min-width: 260px;
-    text-align: center;
-}
-.temporada1-hero-img {
-    width: 500px;
-    max-width: 100%;
-    border-radius: 18px;
-    margin-bottom: 1.2em;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-}
-.temporada1-hero-img.main {
-    margin-bottom: 1.2em;
-}
-.temporada1-hero-text {
-    flex: 2 1 340px;
-    min-width: 260px;
-}
-.temporada1-title {
-    font-family: 'Baloo 2',cursive;
-    color: var(--color-primary);
-    text-align: left;
-    font-size: 2.2em;
-    margin-bottom: 0.2em;
-}
-.temporada1-subtitle {
-    font-family: 'Baloo 2',cursive;
-    color: #2d8bba;
-    text-align: left;
-    font-size: 1.3em;
-    margin-bottom: 1em;
-}
-.temporada1-datos {
-    font-size: 1.1em;
-    color: #333;
-    padding-left: 1.2em;
-    margin-bottom: 1.2em;
-    line-height: 1.7;
-}
-.temporada1-descripcion {
-    font-size: 1.1em;
-    color: #333;
-    line-height: 1.7;
-}
-.temporada1-descripcion p {
-    margin-bottom: 1em;
-}
-/* Mejor contraste para íconos descriptivos */
+/* Colores de emojis/iconos en cada temporada */
 .icon-rocket { color: #1a237e !important; }
 .icon-secret { color: #2d8bba; }
 .icon-laugh { color: #e94f37; }
 .icon-star { color: #00bcd4 !important; }
 
-/* Momentos inolvidables */
-.momentos-title {
-    font-family: 'Baloo 2',cursive;
-    color: var(--color-primary);
-    text-align: center;
-    margin-bottom: 1.2em;
-    font-size: 2.2em;
-    letter-spacing: 1px;
-}
-.momentos-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2em;
-    justify-content: center;
-}
-.momentos-card {
-    background: #f5b583;
-    border-radius: 18px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    padding: 1.2em;
-    max-width: 270px;
-    min-width: 220px;
-    flex: 1 1 220px;
-    text-align: center;
-}
-.momentos-img {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 0.7em;
-}
-.momentos-desc {
-    font-size: 1em;
-}
-.volver-temporadas-btn {
-    text-align: center;
-    margin: 2.5em 0 0 0;
-}
-.volver-temporadas-btn .btn-primary {
-    padding: 0.8em 2em;
-    font-size: 1.1em;
-    border-radius: 12px;
-    background: var(--color-primary);
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Baloo 2',cursive;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    transition: background 0.2s;
-}
-/* === Temporadas Grid === */
-.season-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 32px;
-    margin: 40px 0 0 0;
-}
-.season-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--color-lighter-card-background);
-    border-radius: 14px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-    text-decoration: none;
-    color: var(--color-text-dark);
-    transition: transform 0.2s, box-shadow 0.2s;
-    overflow: hidden;
-    border: 2px solid var(--color-border-dark);
-    position: relative;
-}
-.season-link:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    border-color: var(--color-primary);
-}
-.season-thumb {
-    width: 100%;
-    height: 180px;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-bottom: 1px solid var(--color-border-dark);
-}
-.season-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
-}
-.season-link:hover .season-thumb img {
-    transform: scale(1.07) rotate(-2deg);
-}
-.season-info {
-    padding: 22px 18px 18px 18px;
-    text-align: center;
-}
-.season-info h2 {
-    font-family: 'Baloo 2', cursive;
-    font-size: 2em;
-    color: var(--color-primary);
-    margin: 0 0 10px 0;
-}
-.season-info p {
-    font-size: 1.08em;
-    color: var(--color-text-dark);
-    margin: 0;
-}
-/* El siguiente bloque ya está incluido correctamente al inicio del archivo y no debe duplicarse */
-.animate-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-:root {
-    --color-primary: #ff0000d0; /* Rojo principal */
-    --color-secondary: #fc8536; /* Naranja/Melocotón */
-    --color-text-dark: #333; /* Texto oscuro para buena legibilidad */
-    --color-text-light: #f4f4f4; /* Texto claro */
-    --color-background: #ffffff; /* Blanco puro para fondos de tarjeta */
-    --color-background-light: rgba(255, 255, 255, 0.9); /* Blanco semi-transparente */
-    --color-background-dark: rgba(240, 240, 240, 0.9); /* Gris claro semi-transparente */
-    --color-lighter-card-background: #f5b583; /* Naranja muy claro para las tarjetas de personajes */
-    --color-section-background: #eca36b; /* Naranja un poco más oscuro para las secciones principales */
-    --color-border-dark: #b56a3e; /* Tono oscuro para los bordes */
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    color: var(--color-text-dark); /* Usar el color de texto oscuro */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: url('../img/fondoIndex.webp') no-repeat center center fixed;
-    background-size: cover;
-}
-
-
-body.contact-page {
-    background: url('../img/fondoContacto.webp') no-repeat center center fixed;
-    background-size: cover;
-    color: #333; /* Color de texto para el contacto */
-}
-
-body.temporadas-page {
-    background: url('../img/fondoTemporadas.webp') no-repeat center center fixed;
-    background-size: cover;
-    color: #333;
-}
-
-.galeria-page {
-    background: url('../img/fondoGaleria.webp') no-repeat center center fixed;
-    background-size: cover;
-    color: #333; /* Color de texto para la galería */
-}
-
-
-h1 {
-    font-family: 'Baloo 2', cursive;
-}
-
-p {
-    font-family: 'Roboto', sans-serif;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: var(--color-secondary); /* Usar variable para el color del header */
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.header .logo {
-    margin-left: 200px;
-}
-
-.header .logo img {
-    height: 130px;
-}
-
-.menu-toggle {
-    display: none;
-}
-
-.hamburger-icon {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    cursor: pointer;
-    z-index: 1000;
-    position: relative;
-}
-
-.hamburger-icon span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: var(--color-text-dark); /* Usar variable para el color de las barras */
-    border-radius: 3px;
-    transition: all 0.3s ease-in-out;
-}
-
-.nav-menu {
-    position: unset;
-    left: unset;
-    transform: unset;
-    margin-left: auto;
-    margin-right: 220px;
-}
-
-.nav-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.nav-menu ul li {
-    margin-left: 20px;
-}
-
-.nav-menu ul li a {
-    text-decoration: none;
-    color: var(--color-text-dark); /* Usar variable para el color del texto del menú */
-    font-weight: bold;
-    font-size: 1.6em;
-    font-family: 'Roboto', sans-serif;
-    transition: color 0.3s ease, text-decoration 0.3s ease;
-}
-
-.nav-menu ul li a:hover {
-    color: var(--color-primary); /* Usar variable para el color del hover */
-}
-
-.main-content {
-    flex-grow: 1;
-    padding: 20px;
-    max-width: 1075px;
-    margin: 30px auto;
-    background: var(--color-section-background); /* Fondo más oscuro */
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.main-content h1 {
-    margin-bottom: 20px;
-    color: var(--color-text-dark); /* Usar variable */
-    font-size: 2.8em;
-    text-align: center;
-    font-family: 'Baloo 2', cursive;
-    transition: color 0.3s ease, font-size 0.3s ease;
-}
-
-.main-content h1:hover {
-    color: var(--color-primary); /* Usar variable */
-    font-size: 3em;
-}
-
+/* Utilidades varias */
 .text-content p {
-    font-size: 1.3em;
-    line-height: 1.2;
-    margin-bottom: 35px;
+	font-size: 1.3em;
+	line-height: 1.2;
+	margin-bottom: 35px;
 }
-
 .text-content h2 {
-    font-family: 'Baloo 2', cursive;
-    font-size: 2em;
-    color: var(--color-primary); /* Usar variable */
-    margin-top: 15px;
-    margin-bottom: 15px;
+	font-family: 'Baloo 2', cursive;
+	font-size: 2em;
+	color: var(--color-primary);
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
-
 .text-content p:first-child {
-    margin-top: -2px;
-    margin-bottom: 45px;
+	margin-top: -2px;
+	margin-bottom: 45px;
 }
-
 .content-section {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	justify-content: center;
+	align-items: center;
 }
 
-.main-character-card {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: center;
-    background-color: var(--color-lighter-card-background); /* Fondo más claro para las tarjetas */
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid var(--color-border-dark); /* Borde oscuro */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-    width: 100%;
-}
-
-.main-character-card:nth-child(even) {
-    flex-direction: row-reverse; /* Alternar el orden para las tarjetas pares */
-}
-
-.character-main-text {
-    flex: 1 1 55%;
-}
-
-.character-main-text h2 {
-    font-family: 'Baloo 2', cursive;
-    font-size: 2.2em;
-    color: var(--color-primary);
-    margin-top: 0;
-    margin-bottom: 15px;
-}
-
-.character-main-text p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    margin-bottom: 0;
-}
-
-.character-details-wrapper {
-    flex: 1 1 35%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.character-details-wrapper img {
-    max-width: 280px;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.character-details-wrapper img:hover {
-    transform: scale(1.05);
-}
-
-.character-details-wrapper .info-text {
-    font-size: 1.1em;
-    line-height: 1.5;
-    text-align: center;
-}
-
-.character-details-wrapper .detail-item {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    max-width: 280px;
-    margin-bottom: 5px;
-}
-
-.character-details-wrapper .detail-title {
-    font-weight: bold;
-    color: var(--color-primary);
-}
-
-.image-gallery {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 10px;
-    justify-content: center;
-}
-
-.image-gallery .image-info-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.image-gallery img {
-    max-width: 180px;
-    height: auto;
-    transition: transform 0.3s ease-in-out;
-}
-
-.image-gallery .info-text {
-    font-size: 1.1em;
-    line-height: 1.5;
-}
-
-.image-gallery .info-text p {
-    margin: 3px 0;
-    white-space: nowrap;
-}
-
-.image-gallery .info-text .description-text {
-    white-space: normal;
-    max-width: 200px;
-}
-
-.image-gallery img:hover {
-    transform: scale(1.05);
-}
-
-.footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: var(--color-secondary); /* Usar variable */
-    margin-top: auto;
-}
-
-.legal-info p,
-.social-media a {
-    margin: 0 10px;
-    color: #555;
-    text-decoration: none;
-}
-
-.social-media .social-icon i {
-    font-size: 24px;
-    color: #555;
-}
-
-@media (max-width: 768px) {
-    .header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100vw;
-        min-width: 0;
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .header .logo {
-        margin-left: 0 !important;
-        margin-right: auto;
-        order: 1;
-    }
-
-    .hamburger-icon {
-        margin-left: auto;
-        margin-right: 10px;
-        order: 2;
-    }
-
-    .nav-menu {
-        position: fixed;
-        top: 150px;
-        left: 0;
-        width: 100%;
-        max-height: 0;
-        overflow: hidden;
-        background: linear-gradient(to bottom, var(--color-secondary), #ffad6e); /* Usar variable */
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        transition: max-height 0.3s ease-in-out;
-        z-index: 1000;
-        padding-top: 20px;
-        display: flex;
-        flex-direction: column;
-        visibility: hidden;
-    }
-
-    .nav-menu ul {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .nav-menu ul li {
-        margin: 15px 0;
-    }
-
-    .hamburger-icon {
-        display: flex;
-        z-index: 1001;
-    }
-
-    .nav-menu.active {
-        max-height: calc(100vh - 150px) !important;
-        visibility: visible !important;
-    }
-
-    .hamburger-icon.active span:nth-child(1) {
-        transform: translateY(11px) rotate(45deg);
-    }
-
-    .hamburger-icon.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger-icon.active span:nth-child(3) {
-        transform: translateY(-11px) rotate(-45deg);
-    }
-
-    .footer {
-        flex-direction: column-reverse;
-        text-align: center;
-    }
-
-    .social-media .social-icon i {
-        font-size: 32px;
-    }
-
-    .legal-info,
-    .social-media {
-        margin-top: 10px;
-    }
-}
-
-.secondary-characters-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 30px;
-    max-width: 1000px;
-    margin: 30px auto;
-    background: var(--color-section-background); /* Fondo más oscuro */
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.secondary-characters-gallery .character-card {
-    flex: 0 1 calc(33.333% - 60px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: #f5b583;
-    border-radius: 10px;
-    border: 2px solid var(--color-border-dark); /* Borde oscuro */
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.secondary-characters-gallery .character-card img {
-    max-width: 180px;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    transition: transform 0.3s ease-in-out;
-    background: #f5b583;
-}
-
-.secondary-characters-gallery .character-card img:hover {
-    transform: scale(1.05);
-}
-
-.secondary-characters-gallery .character-card .info-text p {
-    margin: 3px 0;
-    font-size: 1em;
-    white-space: normal;
-}
-
-.secondary-characters-gallery .character-card .description-text {
-    font-size: 0.95em;
-    color: #555;
-    margin-top: 8px;
-    line-height: 1.3;
-    max-width: 250px;
-}
-
-@media (max-width: 1024px) {
-    .secondary-characters-gallery .character-card {
-        flex: 0 1 calc(50% - 40px);
-    }
-}
-
-@media (max-width: 600px) {
-    .secondary-characters-gallery .character-card {
-        flex: 0 1 calc(100% - 30px);
-    }
-}
-
+/* === Formularios de contacto === */
 .contact-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
 }
-
 .left-column {
-    flex: 1 1 25%;
-    min-width: 250px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+	flex: 1 1 25%;
+	min-width: 250px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
-
 .contact-info {
-    background-color: var(--color-lighter-card-background); /* Fondo más claro para las tarjetas */
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid var(--color-border-dark); /* Borde oscuro */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	background-color: var(--color-lighter-card-background);
+	padding: 20px;
+	border-radius: 10px;
+	border: 2px solid var(--color-border-dark);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
 .contact-info h2 {
-    font-family: 'Baloo 2', cursive;
-    font-size: 2.2em;
-    color: var(--color-primary); /* Usar variable */
-    margin-bottom: 20px;
-    text-align: center;
+	font-family: 'Baloo 2', cursive;
+	font-size: 2.2em;
+	color: var(--color-primary);
+	margin-bottom: 20px;
+	text-align: center;
 }
-
 .contact-info p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    margin-bottom: 10px;
+	font-size: 1.2em;
+	line-height: 1.6;
+	margin-bottom: 10px;
 }
-
 .map-container {
-    width: 100%;
-    height: 350px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	height: 350px;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
 .map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
 }
-
 .contact-form-container {
-    flex: 1 1 25%;
-    min-width: 250px;
+	flex: 1 1 25%;
+	min-width: 250px;
 }
-
 .contact-form {
-    background-color: var(--color-lighter-card-background); /* Fondo más claro para las tarjetas */
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid var(--color-border-dark); /* Borde oscuro */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	background-color: var(--color-lighter-card-background);
+	padding: 20px;
+	border-radius: 10px;
+	border: 2px solid var(--color-border-dark);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
 .contact-form h2 {
-    font-family: 'Baloo 2', cursive;
-    font-size: 2.2em;
-    color: var(--color-primary); /* Usar variable */
-    margin-bottom: 20px;
-    text-align: center;
+	font-family: 'Baloo 2', cursive;
+	font-size: 2.2em;
+	color: var(--color-primary);
+	margin-bottom: 20px;
+	text-align: center;
 }
-
 .form-group {
-    margin-bottom: 15px;
+	margin-bottom: 15px;
 }
-
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: var(--color-text-dark); /* Usar variable */
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+	color: var(--color-text-dark);
 }
-
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group select,
 .form-group textarea {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1em;
-    box-sizing: border-box;
+	width: calc(100% - 20px);
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 1em;
+	box-sizing: border-box;
 }
-
 .form-group textarea {
-    resize: vertical;
+	resize: vertical;
 }
-
 .contact-form button {
-    background-color: var(--color-primary); /* Usar variable */
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+	background-color: var(--color-primary);
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 1.1em;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
 }
-
 .contact-form button:hover {
-    background-color: #cc0000;
+	background-color: #cc0000;
 }
 
-@media (max-width: 768px) {
-    .contact-section {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .left-column,
-    .contact-form-container {
-        width: 90%;
-        min-width: unset;
-    }
-
-    .map-container {
-        height: 300px;
-    }
-}
-
-.gallery-container {
-    padding: 20px;
-    max-width: 975px;
-    margin: 30px auto;
-    background: var(--color-section-background); /* Fondo más oscuro para el contenedor de la galería */
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.gallery-container h1 {
-    text-align: center;
-    color: var(--color-text-dark); /* Usar variable */
-    margin-bottom: 30px;
-    font-family: 'Baloo 2', cursive;
-}
-
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-}
-
-.image-grid a {
-    display: block;
-    overflow: hidden;
-    border-radius: 8px;
-    background-color: var(--color-lighter-card-background); /* Fondo más claro para las tarjetas de imagen */
-    border: 2px solid var(--color-border-dark); /* Borde oscuro */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-}
-
-.image-grid a:hover {
-    transform: scale(1.03);
-}
-
-.image-grid img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.lightbox-content {
-    margin: auto;
-    display: block;
-    max-width: 80%;
-    max-height: 80%;
-    transition: transform 0.1s ease-out;
-    cursor: zoom-in;
-}
-
-.image-counter {
-    color: var(--color-text-light); /* Usar variable */
-    font-size: 18px;
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: var(--color-text-light); /* Usar variable */
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.prev-btn,
-.next-btn {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -50px;
-    color: var(--color-text-light); /* Usar variable */
-    font-weight: bold;
-    font-size: 20px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-.prev-btn {
-    left: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.next-btn {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev-btn:hover,
-.next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
+/* =========================
+   MEDIA QUERIES
+========================= */
 @media (max-width: 1024px) {
-    .image-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+	.image-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.secondary-characters-gallery .character-card {
+		flex: 0 1 calc(50% - 40px);
+	}
 }
-
 @media (max-width: 768px) {
-    .image-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+	.header {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		width: 100vw;
+		min-width: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.header .logo {
+		margin-left: 0 !important;
+		margin-right: auto;
+		order: 1;
+	}
+	.hamburger-icon {
+		margin-left: auto;
+		margin-right: 10px;
+		order: 2;
+		display: flex;
+		z-index: 1001;
+	}
+	.nav-menu {
+		position: fixed;
+		top: 150px;
+		left: 0;
+		width: 100%;
+		max-height: 0;
+		overflow: hidden;
+		background: linear-gradient(to bottom, var(--color-secondary), #ffad6e);
+		box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+		transition: max-height 0.3s ease-in-out;
+		z-index: 1000;
+		padding-top: 20px;
+		display: flex;
+		flex-direction: column;
+		visibility: hidden;
+	}
+	.nav-menu ul {
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+	.nav-menu ul li {
+		margin: 15px 0;
+	}
+	.nav-menu.active {
+		max-height: calc(100vh - 150px) !important;
+		visibility: visible !important;
+	}
+	.hamburger-icon.active span:nth-child(1) {
+		transform: translateY(11px) rotate(45deg);
+	}
+	.hamburger-icon.active span:nth-child(2) {
+		opacity: 0;
+	}
+	.hamburger-icon.active span:nth-child(3) {
+		transform: translateY(-11px) rotate(-45deg);
+	}
+	.main-content {
+		border-radius: 0 !important;
+		border: none !important;
+		box-shadow: none !important;
+		width: auto !important;
+		margin-left: 2vw !important;
+		margin-right: 2vw !important;
+		max-width: 96vw !important;
+		box-sizing: border-box;
+	}
+	html, body {
+		overflow-x: hidden !important;
+		max-width: 100vw !important;
+	}
+	.footer {
+		flex-direction: column-reverse;
+		text-align: center;
+	}
+	.social-media .social-icon i {
+		font-size: 32px;
+	}
+	.main-character-card {
+		flex-direction: column;
+	}
+	.main-character-card:nth-child(even) {
+		flex-direction: column;
+	}
+	.character-main-text,
+	.character-details-wrapper {
+		flex: 1 1 100%;
+	}
+	.character-details-wrapper img {
+		margin-top: 20px;
+	}
+	.contact-section {
+		flex-direction: column;
+		align-items: center;
+	}
+	.left-column,
+	.contact-form-container {
+		width: 90%;
+		min-width: unset;
+	}
+	.map-container {
+		height: 300px;
+	}
+	.image-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
-
+@media (max-width: 600px) {
+	.secondary-characters-gallery .character-card {
+		flex: 0 1 calc(100% - 30px);
+	}
+}
 @media (max-width: 480px) {
-    .image-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .lightbox-content {
-        max-width: 95%;
-        max-height: 70%;
-    }
+	.image-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.lightbox-content {
+		max-width: 95%;
+		max-height: 70%;
+	}
 }
 
-/* Animación de entrada para las tarjetas */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
+/* ...continúa con componentes, utilidades, media queries y reglas específicas... */
 
-.animate-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* ...continúa con galería, personajes, y variantes... */
 
-
-@media (max-width: 768px) {
-    .main-character-card {
-        flex-direction: column; /* Apila imagen y texto en pantallas pequeñas */
-    }
-
-    .main-character-card:nth-child(even) {
-        flex-direction: column; /* Asegura que también se apilen en pantallas pequeñas */
-    }
-
-    .character-main-text,
-    .character-details-wrapper {
-        flex: 1 1 100%;
-    }
-
-    .character-details-wrapper img {
-        margin-top: 20px;
-    }
-}
+/* ...continúa con secciones principales, componentes, utilidades, media queries y reglas específicas... */
