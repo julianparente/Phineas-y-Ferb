@@ -1,26 +1,16 @@
-
-/*
- * style-ordenado.css
- * Archivo reordenado profesionalmente, contiene TODAS las reglas del original, sin eliminar ni modificar ninguna.
- * Estructura: Variables y globales, Layout, Secciones principales, Componentes, Utilidades, Media queries, y todos los estilos específicos.
- */
-
-/* =========================
-   VARIABLES Y GLOBALES
-========================= */
 :root {
-	--color-primary: #ff0000d0; /* Rojo principal */
-	--color-secondary: #fc8536; /* Naranja/Melocotón */
-	--color-text-dark: #333; /* Texto oscuro para buena legibilidad */
-	--color-text-light: #f4f4f4; /* Texto claro */
-	--color-background: #ffffff; /* Blanco puro para fondos de tarjeta */
-	--color-background-light: rgba(255, 255, 255, 0.9); /* Blanco semi-transparente */
-	--color-background-dark: rgba(240, 240, 240, 0.9); /* Gris claro semi-transparente */
-	--color-lighter-card-background: #f5b583; /* Naranja muy claro para las tarjetas de personajes */
-	--color-section-background: #eca36b; /* Naranja un poco más oscuro para las secciones principales */
-	--color-border-dark: #b56a3e; /* Tono oscuro para los bordes */
+	--color-primary: #ff0000d0;
+	--color-secondary: #fc8536;
+	--color-text-dark: #333;
+	--color-text-light: #f4f4f4;
+	--color-background: #ffffff;
+	--color-background-light: rgba(255, 255, 255, 0.9);
+	--color-background-dark: rgba(240, 240, 240, 0.9);
+	--color-lighter-card-background: #f5b583;
+	--color-section-background: #eca36b;
+	--color-border-dark: #b56a3e;
 }
-/* === BOTÓN VOLVER A TEMPORADAS === */
+
 .volver-temporadas-btn {
 	text-align: center;
 	margin: 2.5em 0 0 0;
@@ -36,13 +26,13 @@
 	box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 	transition: background 0.2s;
 }
-/* === CENTRAR CONTENEDOR DE VIDEO EN TEMPORADAS === */
+
 .momentos-card,
 body.temporada1-page .temporada1-momentos-card {
 	margin: 0 auto 2em auto;
 	float: none;
 }
-/* === CENTRAR VIDEO EN TEMPORADAS === */
+
 body.temporada1-page .video-container,
 body.temporada2-page .video-container,
 body.temporada3-page .video-container,
@@ -52,7 +42,7 @@ body.temporada4-page .video-container {
 	align-items: center;
 	margin: 0 auto 2em auto;
 }
-/* === TÍTULO PRINCIPAL CENTRADO Y ANIMADO === */
+
 .main-content h1 {
 	margin-bottom: 20px;
 	color: var(--color-text-dark);
@@ -66,9 +56,6 @@ body.temporada4-page .video-container {
 	font-size: 3em;
 }
 
-/* === REGLAS CRÍTICAS PARA FUNCIONAMIENTO CORRECTO === */
-
-/* Títulos de temporadas y momentos */
 .momentos-title,
 body.temporada2-page .momentos-title,
 body.temporada3-page .momentos-title,
@@ -81,7 +68,6 @@ body.temporada4-page .momentos-title {
 	letter-spacing: 1px;
 }
 
-/* Animaciones hover para imágenes de temporada1 y momentos */
 .temporada1-hero-img, .momentos-img {
 	transition: transform 0.3s;
 }
@@ -89,7 +75,6 @@ body.temporada4-page .momentos-title {
 	transform: scale(1.07) rotate(-2deg);
 }
 
-/* Galería/lightbox */
 .lightbox {
 	display: none;
 	position: fixed;
@@ -168,7 +153,6 @@ body.temporada4-page .momentos-title {
 	background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Temporadas 1, 2, 3 y 4: restaurar reglas específicas */
 body.temporada1-page .hero-section {
 	background: #f5b583;
 	border-radius: 24px;
@@ -243,7 +227,7 @@ html, body {
 body {
 	font-family: 'Roboto', sans-serif;
 	line-height: 1.6;
-	color: var(--color-text-dark); /* Usar el color de texto oscuro */
+	color: var(--color-text-dark);
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
@@ -254,7 +238,7 @@ body {
 body.contact-page {
 	background: url('../img/fondoContacto.webp') no-repeat center center fixed;
 	background-size: cover;
-	color: #333; /* Color de texto para el contacto */
+	color: #333;
 }
 
 body.temporadas-page {
@@ -266,7 +250,7 @@ body.temporadas-page {
 .galeria-page {
 	background: url('../img/fondoGaleria.webp') no-repeat center center fixed;
 	background-size: cover;
-	color: #333; /* Color de texto para la galería */
+	color: #333;
 }
 
 h1 {
@@ -277,15 +261,12 @@ p {
 	font-family: 'Roboto', sans-serif;
 }
 
-/* =========================
-   LAYOUT: HEADER, NAV, FOOTER
-========================= */
 .header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px;
-	background-color: var(--color-secondary); /* Usar variable para el color del header */
+	background-color: var(--color-secondary);
 	width: 100%;
 	z-index: 1000;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -318,7 +299,7 @@ p {
 	display: block;
 	width: 100%;
 	height: 3px;
-	background-color: var(--color-text-dark); /* Usar variable para el color de las barras */
+	background-color: var(--color-text-dark);
 	border-radius: 3px;
 	transition: all 0.3s ease-in-out;
 }
@@ -344,7 +325,7 @@ p {
 
 .nav-menu ul li a {
 	text-decoration: none;
-	color: var(--color-text-dark); /* Usar variable para el color del texto del menú */
+	color: var(--color-text-dark);
 	font-weight: bold;
 	font-size: 1.6em;
 	font-family: 'Roboto', sans-serif;
@@ -352,7 +333,7 @@ p {
 }
 
 .nav-menu ul li a:hover {
-	color: var(--color-primary); /* Usar variable para el color del hover */
+	color: var(--color-primary);
 }
 
 .main-content {
@@ -360,7 +341,7 @@ p {
 	padding: 20px;
 	max-width: 1075px;
 	margin: 30px auto;
-	background: var(--color-section-background); /* Fondo más oscuro */
+	background: var(--color-section-background);
 	border-radius: 15px;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -371,7 +352,7 @@ p {
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px;
-	background-color: var(--color-secondary); /* Usar variable */
+	background-color: var(--color-secondary);
 	margin-top: auto;
 }
 
@@ -387,11 +368,6 @@ p {
 	color: #555;
 }
 
-/* =========================
-   SECCIONES PRINCIPALES
-========================= */
-
-/* === Temporadas Grid === */
 .season-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -452,7 +428,6 @@ p {
 	margin: 0;
 }
 
-/* === Sección Momentos (todas las temporadas) === */
 body.temporada2-page .momentos-section,
 body.temporada3-page .momentos-section,
 body.temporada4-page .momentos-section {
@@ -536,7 +511,6 @@ body.temporada4-page {
 	color: #333;
 }
 
-/* === Estilos exclusivos para la sección de momentos de temporada1.html === */
 body.temporada1-page .momentos-section {
 	max-width: 900px;
 	margin: 0 auto 2.5em auto;
@@ -586,18 +560,17 @@ body.temporada1-page .temporada1-momentos-btn i {
 	margin-left: 6px;
 }
 
-/* === Galería principal === */
 .gallery-container {
 	padding: 20px;
 	max-width: 975px;
 	margin: 30px auto;
-	background: var(--color-section-background); /* Fondo más oscuro para el contenedor de la galería */
+	background: var(--color-section-background);
 	border-radius: 15px;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 .gallery-container h1 {
 	text-align: center;
-	color: var(--color-text-dark); /* Usar variable */
+	color: var(--color-text-dark);
 	margin-bottom: 30px;
 	font-family: 'Baloo 2', cursive;
 }
@@ -610,8 +583,8 @@ body.temporada1-page .temporada1-momentos-btn i {
 	display: block;
 	overflow: hidden;
 	border-radius: 8px;
-	background-color: var(--color-lighter-card-background); /* Fondo más claro para las tarjetas de imagen */
-	border: 2px solid var(--color-border-dark); /* Borde oscuro */
+	background-color: var(--color-lighter-card-background);
+	border: 2px solid var(--color-border-dark);
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	transition: transform 0.2s ease-in-out;
 }
@@ -625,22 +598,21 @@ body.temporada1-page .temporada1-momentos-btn i {
 	display: block;
 }
 
-/* === Personajes principales === */
 .main-character-card {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
 	align-items: center;
-	background-color: var(--color-lighter-card-background); /* Fondo más claro para las tarjetas */
+	background-color: var(--color-lighter-card-background);
 	padding: 20px;
 	border-radius: 10px;
-	border: 2px solid var(--color-border-dark); /* Borde oscuro */
+	border: 2px solid var(--color-border-dark);
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	max-width: 900px;
 	width: 100%;
 }
 .main-character-card:nth-child(even) {
-	flex-direction: row-reverse; /* Alternar el orden para las tarjetas pares */
+	flex-direction: row-reverse;
 }
 .character-main-text {
 	flex: 1 1 55%;
@@ -692,7 +664,6 @@ body.temporada1-page .temporada1-momentos-btn i {
 	color: var(--color-primary);
 }
 
-/* === Personajes secundarios === */
 .secondary-characters-gallery {
 	display: flex;
 	flex-wrap: wrap;
@@ -701,7 +672,7 @@ body.temporada1-page .temporada1-momentos-btn i {
 	padding: 30px;
 	max-width: 1000px;
 	margin: 30px auto;
-	background: var(--color-section-background); /* Fondo más oscuro */
+	background: var(--color-section-background);
 	border-radius: 15px;
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -713,7 +684,7 @@ body.temporada1-page .temporada1-momentos-btn i {
 	text-align: center;
 	background-color: #f5b583;
 	border-radius: 10px;
-	border: 2px solid var(--color-border-dark); /* Borde oscuro */
+	border: 2px solid var(--color-border-dark);
 	padding: 15px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -741,9 +712,6 @@ body.temporada1-page .temporada1-momentos-btn i {
 	max-width: 250px;
 }
 
-/* =========================
-   COMPONENTES Y UTILIDADES
-========================= */
 .animate-on-scroll {
 	opacity: 0;
 	transform: translateY(20px);
@@ -754,13 +722,11 @@ body.temporada1-page .temporada1-momentos-btn i {
 	transform: translateY(0);
 }
 
-/* Colores de emojis/iconos en cada temporada */
 .icon-rocket { color: #1a237e !important; }
 .icon-secret { color: #2d8bba; }
 .icon-laugh { color: #e94f37; }
 .icon-star { color: #00bcd4 !important; }
 
-/* Utilidades varias */
 .text-content p {
 	font-size: 1.3em;
 	line-height: 1.2;
@@ -785,7 +751,6 @@ body.temporada1-page .temporada1-momentos-btn i {
 	align-items: center;
 }
 
-/* === Formularios de contacto === */
 .contact-section {
 	display: flex;
 	flex-wrap: wrap;
@@ -886,9 +851,6 @@ body.temporada1-page .temporada1-momentos-btn i {
 	background-color: #cc0000;
 }
 
-/* =========================
-   MEDIA QUERIES
-========================= */
 @media (max-width: 1024px) {
 	.image-grid {
 		grid-template-columns: repeat(3, 1fr);
@@ -1020,9 +982,3 @@ body.temporada1-page .temporada1-momentos-btn i {
 		max-height: 70%;
 	}
 }
-
-/* ...continúa con componentes, utilidades, media queries y reglas específicas... */
-
-/* ...continúa con galería, personajes, y variantes... */
-
-/* ...continúa con secciones principales, componentes, utilidades, media queries y reglas específicas... */
